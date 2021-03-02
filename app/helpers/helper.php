@@ -1,8 +1,5 @@
 <?php
-
-function env($key, $default = ''){
-    if(isset($_ENV[$key])){
-        return $_ENV[$key];
-    }
-    return $default;
-}
+/**
+ * help.php define a set of usefull functions
+ * to help you develope faster and easaly
+ */

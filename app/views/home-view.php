@@ -1,4 +1,7 @@
-<?php 
+<h1>
+    Home page !
+    <?php foreach($users as $user):?>
+        <h3><?=$user->login?></h3>
 
-echo ($name);
-echo ($id);
+    <?php endforeach;?>
+</h1>

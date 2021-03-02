@@ -3,10 +3,9 @@
  * process the URL and call the propriate resources
  * URL FORMAT : /controller/method/params
 */
-namespace App\Libraries;
 
 class Core {
-    protected $currentController = 'HomeController';
+    protected $currentController = 'Home';
     protected $currentMethod = 'index';
     protected $params = array();
 
@@ -39,7 +38,7 @@ class Core {
             $this->currentController = new $this->currentController;
         }else{
             require_once '../app/helpers/404.php';
-            die();
+            die('Controller not foud');
         }   
     }
 
@@ -48,7 +47,7 @@ class Core {
             $this->currentMethod = $method;
         }else{
             require_once '../app/helpers/404.php';
-            die();
+            die('Method not found');
         } 
     }
 

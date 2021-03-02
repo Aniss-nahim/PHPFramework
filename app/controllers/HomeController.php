@@ -4,11 +4,12 @@ use App\Controllers\Controller;
 
 class HomeController extends Controller{
     public function __construct(){
-         
+         $this->userModel = $this->model('User');
     }
 
     public function index(){
-        $this->view('home-view', ["name" => "Aniss", "id" => 1]);
+        $users = $this->userModel->all();
+        $this->view('home-view', ["users" => $users]);
     }
 
     public function post($id){
