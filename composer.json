@@ -1,0 +1,13 @@
+{
+    "name": "php/php-framework",
+    "description": "php framework for easy php developing apps",
+    "authors": [
+        {
+            "name": "Aniss Nahim",
+            "email": "aniss202nahim@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
