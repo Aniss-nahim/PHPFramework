@@ -35,10 +35,11 @@ class Core {
         if(file_exists('../app/controllers/'.ucwords($controller).'Controller.php')){
             $this->currentController = ucwords($controller).'Controller';
             require_once '../app/controllers/'.$this->currentController.'.php';
-            $this->currentController = new $this->currentController;
+            $controller = "App\\Controllers\\".$this->currentController;
+            $this->currentController = new $controller;
         }else{
-            require_once '../app/helpers/404.php';
-            die('Controller not foud');
+            require_once '../app/views/404.php';
+            die();
         }   
     }
 
@@ -46,8 +47,8 @@ class Core {
         if(method_exists($this->currentController, $method)){
             $this->currentMethod = $method;
         }else{
-            require_once '../app/helpers/404.php';
-            die('Method not found');
+            require_once '../app/views/404.php';
+            die();
         } 
     }
 

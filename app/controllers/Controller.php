@@ -1,7 +1,7 @@
 <?php
 /**
- * The Main controller whiche all other controllers
- * should extends
+ * The Main controller whiche all
+ * other controllers should extends
 */
 
 namespace App\Controllers;
@@ -11,6 +11,7 @@ class Controller{
     public function model($model){
         if(file_exists('../app/models/'.$model.'.php')){
             require_once '../app/models/'.$model.'.php';
+            $model = "App\\Models\\".$model;
             return new $model;
         }
     }

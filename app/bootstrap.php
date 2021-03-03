@@ -9,9 +9,10 @@ require_once 'config/config.php';
 // load helpers
 require_once 'helpers/helper.php';
 
-// base controller
+// Controller
 require_once 'controllers/Controller.php';
 
+// Model
 require_once 'models/Model.php';
 
 //load libraries

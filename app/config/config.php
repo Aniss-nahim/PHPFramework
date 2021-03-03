@@ -16,13 +16,3 @@ function env($key, $default = ''){
     }
     return $default;
 }
-
-/**
- * Get resources from the public folder
- */
-function assets($path=''){
-    if(isset($_ENV['APP_URL'])){
-        return $_ENV['APP_URL'].'/public/'.$path;
-    }
-    return $path;
-}

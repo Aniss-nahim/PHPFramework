@@ -1,18 +1,16 @@
 <?php
 
+namespace App\Controllers;
+
 use App\Controllers\Controller;
 
 class HomeController extends Controller{
     public function __construct(){
-         $this->userModel = $this->model('User');
+        // load models
     }
 
     public function index(){
-        $users = $this->userModel->all();
-        $this->view('home-view', ["users" => $users]);
+        $this->view('home-view', ["data" => "Data from Database"]);
     }
-
-    public function post($id){
-        echo "id  $id this is method ". __METHOD__;
-    }
+    
 }

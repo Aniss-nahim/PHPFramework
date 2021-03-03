@@ -1,4 +1,9 @@
 <?php
+/**
+ * The Main Model whiche all
+ * other controllers should extends
+*/
+namespace App\Models;
 
 class Model{
 
@@ -6,7 +11,7 @@ class Model{
     private $stmt;
 
     public function __construct(){
-        $this->pdo = Database::getConnection();
+        $this->pdo = \Database::getConnection();
     }
 
     public function prepare($query){

@@ -1,8 +1,15 @@
 <?php 
 
+namespace App\Models;
+
+use App\Models\Model;
+
 class User extends Model{
 
-    private $table = "Users"; 
+    /**
+     * Your table name
+     */
+    private $table; 
 
     public function __construct(){
         parent::__construct();
