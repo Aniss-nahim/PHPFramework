@@ -10,7 +10,9 @@ class HomeController extends Controller{
     }
 
     public function index(){
-        $this->view('home-view', ["data" => "Data from Database"]);
+        $this->view('home-view');
     }
     
 }
+
+return __NAMESPACE__;

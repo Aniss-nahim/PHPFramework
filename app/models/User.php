@@ -21,5 +21,6 @@ class User extends Model{
         $this->execute();
         return $this->fetch();
     }
-
 }
+
+return __NAMESPACE__;
