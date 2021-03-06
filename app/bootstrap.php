@@ -2,6 +2,11 @@
 /**
  * Requires all files that you need to run your app
  */
+use App\Libraries\Core;
+use App\Libraries\Router;
+
+// Autoload Classes
+require_once realpath("../vendor/autoload.php");
 
 // load config
 require_once 'config/config.php';
@@ -9,15 +14,4 @@ require_once 'config/config.php';
 // load helpers
 require_once 'helpers/helper.php';
 
-// Controller
-require_once 'controllers/Controller.php';
-
-// Model
-require_once 'models/Model.php';
-
-//load libraries
-spl_autoload_register(function($className){
-    if(file_exists('../app/libraries/'.$className.'.php')){
-        require_once 'libraries/'.$className.'.php';
-    }
-});
+$init =  new Core(new Router);

@@ -2,6 +2,7 @@
 /**
  * PDO CLASS for dataBase connexion
  */
+namespace App\Libraries;
 
 class Database{
     private $connection;
