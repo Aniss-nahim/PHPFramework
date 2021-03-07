@@ -11,7 +11,7 @@
     <?php yeild("includes/navbar") ?>
     
     <main>
-        <?php yeild("@content") ?>
+        {{content}}
     </main>
     
     <?php yeild("includes/footer") ?>

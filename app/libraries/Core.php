@@ -11,8 +11,27 @@ class Core {
 
     public static $router;
 
-    public function __construct(Router $router){
+    /**
+     * Core constructor
+     * @param Router
+     */
+    public function __construct(Router $router = null){
         self::$router = $router;
     }
 
+    /**
+     * Use a specific router object 
+     * @param Router
+     */
+    public static function use(Router $router){
+        self::$router = $router;
+    }
+
+    /**
+     * Init the core process
+     */
+    public function init(){
+        // resolve route
+        self::$router->processRoute();
+    }
 }

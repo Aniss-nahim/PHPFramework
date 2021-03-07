@@ -2,7 +2,7 @@
 /**
  * Requires all files that you need to run your app
  */
-use App\Libraries\Core;
+use App\Libraries\App;
 use App\Libraries\Router;
 
 // Autoload Classes
@@ -14,4 +14,12 @@ require_once 'config/config.php';
 // load helpers
 require_once 'helpers/helper.php';
 
-$init =  new Core(new Router);
+//Reister routes
+require_once 'map/router.php';
+
+$app = App::create(ROOT_APP);
+$router = new Router;
+
+$app->use($router);
+
+$app->start();

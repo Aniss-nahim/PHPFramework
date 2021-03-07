@@ -9,7 +9,7 @@
  */
 function assets($path=''){
     if(isset($_ENV['APP_URL'])){
-        return $_ENV['APP_URL'].'/public/'.$path;
+        return $_ENV['APP_URL'].'/'.$path;
     }
     return $path;
 }

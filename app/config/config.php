@@ -1,5 +1,7 @@
 <?php
 
+define('ROOT_APP', dirname(__DIR__));
+
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(dirname(dirname(__DIR__)));
