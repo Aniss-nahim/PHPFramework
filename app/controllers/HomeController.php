@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Libraries\Request;
+
 class HomeController extends Controller{
     public function __construct(){
         
@@ -11,8 +13,8 @@ class HomeController extends Controller{
         $this->view('home-view', ['data'=> 'This is working good !']);
     }
 
-    public function store(){
-        echo  'this is the post method !';
+    public function store(Request $request){
+        
     }
     
 }
