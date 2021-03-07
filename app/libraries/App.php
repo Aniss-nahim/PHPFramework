@@ -74,4 +74,11 @@ class App{
     public static function respondWith(int $code){
         self::$application->response->setStatus($code);
     }
+
+    /**
+     * Get router useed by the application
+     */
+    public static function router(){
+        return Core::$router;
+    }
 }

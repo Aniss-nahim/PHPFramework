@@ -39,25 +39,34 @@ class Router{
 
         if(is_string($callback)){
             echo $this->render($callback);
-        }else{
-            return call_user_func($callback);
+            return;
         }
+        
+        if(is_array($callback)){
+            $controller = $callback[0];
+            $callback[0] = new $controller;
+        }
+
+        return call_user_func($callback);
     }
 
     /**
      * Render view HTML
      * @param srting
      */
-    public function render($view){
+    public function render($view, $params = []){
         $appLayout = $this->cacheLayout('app-view');
-        $viewContent = $this->cacheLayout($view);
+        $viewContent = $this->cacheLayout($view, $params);
         return str_replace('{{content}}', $viewContent, $appLayout);
     }
 
     /**
      * Cache a view content
      */
-    private function cacheLayout($view){
+    private function cacheLayout($view, $params = []){
+        foreach($params as $key => $value){
+            $$key = $value;
+        }
         ob_start();
         include_once App::$rootApp."/views/$view.php";
         return ob_get_clean();
@@ -66,7 +75,7 @@ class Router{
     /**
      * Register a GET route
      * @param String
-     * @param Closure
+     * @param Closure | string | Array
      * @return void
      */
     public static function get($path, $callback){
@@ -76,7 +85,7 @@ class Router{
     /**
      * Register a POST route
      * @param String
-     * @param Closure
+     * @param Closure | string | Array
      * @return void
      */
     public static function post($path, $callback){

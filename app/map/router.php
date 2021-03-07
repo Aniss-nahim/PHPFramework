@@ -5,13 +5,14 @@
  * All  routes should be registred here
  */
 use App\Libraries\Router;
+use App\Controllers\HomeController;
 
-Router::get('/','home-view');
+Router::get('/',['App\Controllers\HomeController', 'index']);
 
 Router::get('/contact', function(){
     echo 'contact page';
 });
 
-Router::post('/', function (){
-    echo 'This is post method';
-});
+Router::get('/about', 'home-view');
+
+Router::post('/', [HomeController::class, 'store']);

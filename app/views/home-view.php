@@ -8,4 +8,5 @@
         <input type="text" name="name" id="name" required>
         <input type="submit" value="Submit">
     </form>
+    <h2><?= $data ?? null ?></h2>
 </section>

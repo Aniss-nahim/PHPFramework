@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Controller;
-
 class HomeController extends Controller{
     public function __construct(){
-        // load models
+        
     }
 
     public function index(){
-        $this->view('home-view');
+        $this->view('home-view', ['data'=> 'This is working good !']);
+    }
+
+    public function store(){
+        echo  'this is the post method !';
     }
     
 }
-
-return __NAMESPACE__;
