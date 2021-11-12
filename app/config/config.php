@@ -1,6 +1,7 @@
 <?php
+//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
-require_once realpath(dirname(dirname(__DIR__)) . "/vendor/autoload.php");
+define('ROOT_APP', dirname(__DIR__));
 
 use Dotenv\Dotenv;
 

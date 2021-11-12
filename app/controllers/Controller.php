@@ -5,6 +5,7 @@
 */
 
 namespace App\Controllers;
+use App\Libraries\App;
 
 class Controller{
 
@@ -17,11 +18,6 @@ class Controller{
     }
 
     public function view($view, $data = []){
-        if(file_exists('../app/views/'.$view.'.php')){
-            foreach($data as $key => $value){
-                $$key = $value;
-            }
-            require_once '../app/views/'.$view.'.php';
-        }
+        echo App::router()->render($view, $data);
     }
 }

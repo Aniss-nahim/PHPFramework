@@ -1,58 +1,37 @@
 <?php
 /**
- * process the URL and call the propriate resources
- * URL FORMAT : /controller/method/params
+ * Application core that init the process
+ * 
 */
+namespace App\Libraries;
+
+use App\Libraries\Router;
 
 class Core {
-    protected $currentController = 'Home';
-    protected $currentMethod = 'index';
-    protected $params = array();
 
-    public function __construct(){
-        $route = $this->getUrl();
-        $this->loadController( isset($route[0]) ?  $route[0] : $this->currentController );
-        unset($route[0]);
-        $this->loadMethod( isset($route[1]) ?  $route[1] : $this->currentMethod );
-        unset($route[1]);
-        $this->loadParameters($route);
-        unset($route);
-        call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
+    public static $router;
+
+    /**
+     * Core constructor
+     * @param Router
+     */
+    public function __construct(Router $router = null){
+        self::$router = $router;
     }
 
-    public function getUrl(){
-        if(isset($_GET['url'])){
-            $url = filter_var(
-                rtrim($_GET['url'], "/"), 
-                FILTER_SANITIZE_URL
-            );
-            $urlArray = explode('/', $url);
-            return $urlArray;
-        }
+    /**
+     * Use a specific router object 
+     * @param Router
+     */
+    public static function use(Router $router){
+        self::$router = $router;
     }
 
-    public function loadController($controller){
-        if(file_exists('../app/controllers/'.ucwords($controller).'Controller.php')){
-            $this->currentController = ucwords($controller).'Controller';
-            $namespace = require_once '../app/controllers/'.$this->currentController.'.php';
-            $controller = $namespace."\\".$this->currentController;
-            $this->currentController = new $controller;
-        }else{
-            require_once '../app/views/404.php';
-            die();
-        }   
-    }
-
-    public function loadMethod($method){
-        if(method_exists($this->currentController, $method)){
-            $this->currentMethod = $method;
-        }else{
-            require_once '../app/views/404.php';
-            die();
-        } 
-    }
-
-    public function loadParameters($route){
-        $this->params = $route ? array_values($route) : array();
+    /**
+     * Init the core process
+     */
+    public function init(){
+        // resolve route
+        self::$router->processRoute();
     }
 }

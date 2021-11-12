@@ -2,6 +2,11 @@
 /**
  * Requires all files that you need to run your app
  */
+use App\Libraries\App;
+use App\Libraries\Router;
+
+// Autoload Classes
+require_once realpath("../vendor/autoload.php");
 
 // load config
 require_once 'config/config.php';
@@ -9,15 +14,12 @@ require_once 'config/config.php';
 // load helpers
 require_once 'helpers/helper.php';
 
-// Controller
-require_once 'controllers/Controller.php';
+//Reister routes
+require_once 'map/router.php';
 
-// Model
-require_once 'models/Model.php';
+$app = App::create(ROOT_APP);
+$router = new Router;
 
-//load libraries
-spl_autoload_register(function($className){
-    if(file_exists('../app/libraries/'.$className.'.php')){
-        require_once 'libraries/'.$className.'.php';
-    }
-});
+$app->use($router);
+
+$app->start();
